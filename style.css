@@ -1,0 +1,534 @@
+/* ==========================================================================
+   CSS STYLESHEET - CÓ YÊU ANH KHÔNG? (ROMANTIC & DYNAMIC DESIGN)
+   ========================================================================== */
+
+:root {
+    --primary-pink: #ff4e88;
+    --primary-rose: #ff758c;
+    --accent-purple: #7928ca;
+    --accent-gold: #ffb703;
+    --bg-dark-1: #0f051d;
+    --bg-dark-2: #2a0845;
+    --glass-bg: rgba(255, 255, 255, 0.12);
+    --glass-border: rgba(255, 255, 255, 0.25);
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    --text-white: #ffffff;
+    --text-pink: #ffb3c6;
+    --text-muted: rgba(255, 255, 255, 0.8);
+    --font-main: 'Be Vietnam Pro', sans-serif;
+    --font-accent: 'Dancing Script', cursive;
+    --font-heading: 'Pacifico', cursive;
+    --radius-lg: 24px;
+    --radius-md: 16px;
+    --radius-sm: 10px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: var(--font-main);
+    background: linear-gradient(135deg, var(--bg-dark-1) 0%, var(--bg-dark-2) 50%, #4a0033 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-white);
+    overflow-x: hidden;
+    position: relative;
+    padding: 20px;
+}
+
+/* Background Canvas */
+#bg-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Audio Control Button */
+.audio-control-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+.glass-btn {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    color: var(--text-white);
+    padding: 10px 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.glass-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 78, 136, 0.4);
+}
+
+/* Main App Container */
+.app-container {
+    width: 100%;
+    max-width: 580px;
+    position: relative;
+    z-index: 10;
+}
+
+/* Glassmorphism Card System */
+.glass-card {
+    background: rgba(30, 15, 45, 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1.5px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
+}
+
+.glass-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 117, 140, 0.12) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+/* Mascot Wrapper */
+.mascot-wrapper {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    margin: 0 auto 24px;
+}
+
+.mascot-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 25px rgba(255, 78, 136, 0.4);
+}
+
+.heart-badge {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    background: linear-gradient(45deg, #ff4e88, #ff758c);
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    box-shadow: 0 4px 12px rgba(255, 78, 136, 0.6);
+    animation: heartBeat 1.4s infinite ease-in-out;
+}
+
+/* Titles & Typography */
+.main-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    line-height: 1.3;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+}
+
+.highlight-text {
+    background: linear-gradient(90deg, #ff758c, #ff7eb3, #ffb703);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: var(--font-heading);
+    font-weight: 400;
+    font-size: 2.5rem;
+    display: inline-block;
+}
+
+.subtitle {
+    font-size: 1.05rem;
+    color: var(--text-pink);
+    margin-bottom: 28px;
+    font-weight: 500;
+}
+
+/* Dodge Counter Badge */
+.dodge-badge {
+    display: inline-block;
+    background: rgba(255, 183, 3, 0.2);
+    border: 1px solid rgba(255, 183, 3, 0.4);
+    color: var(--accent-gold);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    animation: bounce 0.5s ease;
+}
+
+/* Buttons Group Container */
+.buttons-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    min-height: 80px;
+    position: relative;
+}
+
+/* Base Button Styles */
+.btn {
+    padding: 16px 36px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    user-select: none;
+    font-family: var(--font-main);
+}
+
+/* YES BUTTON */
+.btn-yes {
+    background: linear-gradient(135deg, #ff4e88 0%, #ff758c 100%);
+    color: white;
+    box-shadow: 0 10px 25px rgba(255, 78, 136, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+    z-index: 5;
+}
+
+.btn-yes:hover {
+    transform: scale(1.08) translateY(-3px);
+    box-shadow: 0 15px 35px rgba(255, 78, 136, 0.7), inset 0 2px 4px rgba(255, 255, 255, 0.6);
+}
+
+.btn-yes:active {
+    transform: scale(0.98);
+}
+
+/* NO BUTTON (Teleporting/Runaway Button) */
+.btn-no {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffd1dc;
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+/* When runaway button is in absolute escaping mode */
+.btn-no.escaping {
+    position: fixed !important;
+    transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    z-index: 9999 !important;
+}
+
+/* Floating Toast Popup for funny dodge messages */
+.dodge-toast {
+    position: fixed;
+    background: rgba(255, 117, 140, 0.95);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    pointer-events: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 10000;
+    animation: toastPop 1s ease forwards;
+}
+
+/* CELEBRATION CARD */
+.celebration-card {
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.celebration-header {
+    margin-bottom: 24px;
+}
+
+.confetti-icon {
+    font-size: 3rem;
+    margin-bottom: 8px;
+    animation: bounce 1s infinite alternate;
+}
+
+.celebration-title {
+    font-size: 2.2rem;
+    color: #ff85a2;
+    font-family: var(--font-heading);
+    margin-bottom: 6px;
+}
+
+.celebration-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+}
+
+/* Photo Frame */
+.photo-frame {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    margin: 0 auto 24px;
+    border-radius: var(--radius-md);
+    padding: 8px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 78, 136, 0.2));
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.celebration-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: calc(var(--radius-md) - 4px);
+}
+
+.photo-sparkles {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 1.8rem;
+    animation: spin 3s linear infinite;
+}
+
+/* Love Letter Box */
+.love-letter-box {
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    margin-bottom: 24px;
+    text-align: left;
+}
+
+.letter-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    color: var(--primary-rose);
+    margin-bottom: 12px;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
+    padding-bottom: 8px;
+}
+
+.typewriter-content {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #fff;
+    min-height: 60px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.4rem;
+}
+
+/* Love Certificate Box */
+.certificate-box {
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, rgba(255, 183, 3, 0.15), rgba(255, 78, 136, 0.15));
+    border-radius: var(--radius-md);
+    padding: 4px;
+}
+
+.cert-border {
+    border: 2px dashed rgba(255, 183, 3, 0.6);
+    border-radius: calc(var(--radius-md) - 2px);
+    padding: 16px;
+    background: rgba(20, 10, 30, 0.5);
+}
+
+.cert-title {
+    font-weight: 800;
+    color: var(--accent-gold);
+    letter-spacing: 1px;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.cert-desc {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+.cert-details {
+    display: flex;
+    justify-content: space-around;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    border-radius: var(--radius-sm);
+    font-size: 0.95rem;
+}
+
+.cert-val.highlight {
+    color: #ff758c;
+    font-weight: 800;
+}
+
+/* Reason Section */
+.reason-section {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    margin-bottom: 24px;
+}
+
+.reason-section h3 {
+    font-size: 1.15rem;
+    margin-bottom: 12px;
+    color: var(--text-pink);
+}
+
+.reason-box {
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: var(--radius-sm);
+    padding: 14px 18px;
+    margin-bottom: 14px;
+    font-size: 1.05rem;
+    color: #fff;
+    font-weight: 500;
+    font-style: italic;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 12px 24px;
+    font-size: 0.95rem;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: center;
+}
+
+.btn-action {
+    flex: 1;
+    min-width: 200px;
+    padding: 14px 20px;
+    font-size: 1rem;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    color: white;
+}
+
+.btn-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Utilities & Animations */
+.hidden {
+    display: none !important;
+}
+
+.pulse-anim {
+    animation: floatPulse 3s infinite ease-in-out;
+}
+
+@keyframes floatPulse {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-8px) scale(1.03); }
+}
+
+@keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    14% { transform: scale(1.2); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.2); }
+    70% { transform: scale(1); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+@keyframes toastPop {
+    0% { opacity: 0; transform: translateY(10px) scale(0.8); }
+    20% { opacity: 1; transform: translateY(0) scale(1); }
+    80% { opacity: 1; transform: translateY(-10px) scale(1); }
+    100% { opacity: 0; transform: translateY(-20px) scale(0.8); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .glass-card {
+        padding: 30px 18px;
+    }
+    
+    .main-title {
+        font-size: 1.7rem;
+    }
+    
+    .highlight-text {
+        font-size: 2rem;
+    }
+    
+    .buttons-group {
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+    
+    .celebration-title {
+        font-size: 1.8rem;
+    }
+}

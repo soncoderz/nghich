@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Có Yêu Anh Không? ❤️</title>
+    <meta name="description" content="Trang web tỏ tình siêu đáng yêu với hiệu ứng độc đáo!">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Dancing+Script:wght@600;700&family=Pacifico&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Background Canvas for Floating Hearts & Sparkles -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Background Music Toggle Control -->
+    <div class="audio-control-container">
+        <button id="music-toggle-btn" class="glass-btn audio-btn" title="Bật/Tắt nhạc nền">
+            <i class="fa-solid fa-music"></i>
+            <span id="music-status-text">Bật nhạc 🎵</span>
+        </button>
+    </div>
+
+    <!-- Main Container -->
+    <main class="app-container">
+        
+        <!-- SECTION 1: QUESTION CARD (INITIAL STATE) -->
+        <div id="question-card" class="glass-card fade-in">
+            <!-- Cute Mascot Image -->
+            <div class="mascot-wrapper">
+                <img src="assets/cute_cat.png" alt="Mèo cute cầm trái tim" class="mascot-img pulse-anim" id="mascot-img">
+                <div class="heart-badge">❤️</div>
+            </div>
+
+            <!-- Main Question Header -->
+            <h1 class="main-title">
+                Hế lô bé yêu... <br>
+                <span class="highlight-text">Có yêu anh không?</span>
+            </h1>
+
+            <p class="subtitle">Suy nghĩ kỹ trước khi chọn nha! 😉</p>
+
+            <!-- Counter tracker of dodge attempts -->
+            <div id="dodge-counter" class="dodge-badge hidden">
+                Đã cố bấm KHÔNG <span id="dodge-count">0</span> lần 😜
+            </div>
+
+            <!-- Interactive Buttons Container -->
+            <div class="buttons-group" id="btn-group">
+                <!-- YES BUTTON -->
+                <button id="yes-btn" class="btn btn-yes">
+                    <span class="btn-icon">🥰</span>
+                    <span class="btn-text">CÓ YÊU!</span>
+                    <span class="glow-effect"></span>
+                </button>
+
+                <!-- NO BUTTON (RUNAWAY BUTTON) -->
+                <button id="no-btn" class="btn btn-no">
+                    <span class="btn-icon">😜</span>
+                    <span class="btn-text" id="no-btn-text">KHÔNG!</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- SECTION 2: CELEBRATION CARD (AFTER CLICKING YES) -->
+        <div id="celebration-card" class="glass-card celebration-card hidden">
+            
+            <div class="celebration-header">
+                <div class="confetti-icon">🎉</div>
+                <h2 class="celebration-title">YAAAYYY! Anh biết mà! 🥰❤️</h2>
+                <p class="celebration-subtitle">Em chính là điều tuyệt vời nhất của anh!</p>
+            </div>
+
+            <div class="celebration-body">
+                <!-- Cute Celebration Photo -->
+                <div class="photo-frame">
+                    <img src="assets/love_celebration.png" alt="Cặp đôi hạnh phúc" class="celebration-img">
+                    <div class="photo-sparkles">✨</div>
+                </div>
+
+                <!-- Typewriter Romantic Love Letter -->
+                <div class="love-letter-box">
+                    <div class="letter-header">
+                        <i class="fa-solid fa-heart letter-icon"></i>
+                        <span>Bức thư gửi bé yêu</span>
+                    </div>
+                    <div id="typewriter-text" class="typewriter-content"></div>
+                </div>
+
+                <!-- Official Love Certificate -->
+                <div class="certificate-box">
+                    <div class="cert-border">
+                        <div class="cert-title">📜 CHỨNG NHẬN TÌNH YÊU 📜</div>
+                        <p class="cert-desc">Xác nhận rằng chúng mình đã chính thức hợp tác yêu thương nhau từ hôm nay!</p>
+                        <div class="cert-details">
+                            <div class="cert-item">
+                                <span class="cert-label">Thời gian:</span>
+                                <span class="cert-val" id="cert-date">Hôm nay</span>
+                            </div>
+                            <div class="cert-item">
+                                <span class="cert-label">Mức độ yêu:</span>
+                                <span class="cert-val highlight">3000% ∞ ❤️</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive "Why I Love You" Generator -->
+                <div class="reason-section">
+                    <h3>💡 100 Lý Do Anh Yêu Em</h3>
+                    <div id="reason-box" class="reason-box">
+                        <span id="reason-text">Bấm nút bên dưới để xem lý do anh yêu em nha! 👇</span>
+                    </div>
+                    <button id="generate-reason-btn" class="btn btn-secondary">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Xem lý do tiếp theo 💕
+                    </button>
+                </div>
+
+                <!-- Romantic Action Buttons -->
+                <div class="action-buttons">
+                    <button id="send-msg-btn" class="btn btn-yes btn-action">
+                        <i class="fa-brands fa-telegram"></i> Nhắn tin cho anh ngay 💌
+                    </button>
+                    <button id="replay-btn" class="btn btn-outline btn-action">
+                        <i class="fa-solid fa-rotate-left"></i> Chơi lại từ đầu 🔄
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Audio Synth / Sound Effects setup via JS -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
