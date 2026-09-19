@@ -1,5 +1,5 @@
 /* ==========================================================================
-   INTERACTIVE JAVASCRIPT - CÓ YEU ANH KHONG?
+   INTERACTIVE JAVASCRIPT - CÓ YÊU ANH KHÔNG? (BÍCH PHƯỢNG SPECIAL VERSION)
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const musicToggleBtn = document.getElementById('music-toggle-btn');
     const musicStatusText = document.getElementById('music-status-text');
     const mascotImg = document.getElementById('mascot-img');
+    const bgAudio = document.getElementById('bg-audio');
 
     // State Variables
     let dodgeCount = 0;
@@ -27,34 +28,33 @@ document.addEventListener('DOMContentLoaded', () => {
     let isEscaping = false;
     let audioCtx = null;
     let isMusicPlaying = false;
-    let musicInterval = null;
 
-    // --- FUNNY NO-BUTTON DODGE MESSAGES ---
+    // --- FUNNY NO-BUTTON DODGE MESSAGES FOR BÍCH PHƯỢNG ---
     const dodgeMessages = [
-        "Còn lâu 😜",
-        "Đố bắt được em 🏃‍♀️",
-        "Bấm CÓ đi mà! 💕",
-        "Hế hế, hụt rồi 😝",
-        "Đừng cố nữa 🙈",
-        "Nút CÓ ngon hơn 💖",
-        "Hỏng nút rồi! 🤐",
-        "Yêu anh đi mà! 🥰",
-        "Không thể bấm được 🚀",
-        "Bé ngoan bấm CÓ đi 😘"
+        "Bích Phượng còn lâu 😜",
+        "Đố Bích Phượng bắt được 🏃‍♀️",
+        "Bích Phượng bấm CÓ đi mà! 💕",
+        "Hế hế, Bích Phượng hụt rồi 😝",
+        "Đừng cố nữa Bích Phượng ơi 🙈",
+        "Nút CÓ ngon hơn Bích Phượng ơi 💖",
+        "Hỏng nút rồi Bích Phượng ơi! 🤐",
+        "Bích Phượng yêu anh đi mà! 🥰",
+        "Không thể bấm được đâu 🚀",
+        "Bích Phượng bé ngoan bấm CÓ đi 😘"
     ];
 
-    // --- REASONS WHY I LOVE YOU ---
+    // --- REASONS WHY I LOVE BÍCH PHƯỢNG ---
     const loveReasons = [
-        "Vì nụ cười của em làm bừng sáng cả ngày của anh ✨",
-        "Vì em luôn lắng nghe và hiểu anh nhất ❤️",
-        "Vì lúc em nũng nịu siêu cấp đáng yêu 🧸",
-        "Vì em là cô gái ngoan quánh yêu nhất trên đời 🌸",
-        "Vì mỗi lần bên em, anh đều cảm thấy bình yên 🕊️",
-        "Vì đôi mắt em đẹp như cả bầu trời sao 🌌",
-        "Vì em nấu ăn ngon (hoặc rủ anh đi ăn ngon) 🍕😋",
-        "Vì chỉ cần nhìn thấy em là anh quên hết mệt mỏi 💖",
-        "Vì em chính là mảnh ghép hoàn hảo mà anh tìm kiếm 🧩",
-        "Vì đơn giản... em là chính em! 🥰"
+        "Vì nụ cười của Bích Phượng làm bừng sáng cả ngày của anh ✨",
+        "Vì Bích Phượng luôn lắng nghe và hiểu anh nhất ❤️",
+        "Vì lúc Bích Phượng nũng nịu siêu cấp đáng yêu 🧸",
+        "Vì Bích Phượng là cô gái ngoan đáng yêu nhất trên đời 🌸",
+        "Vì mỗi lần bên Bích Phượng, anh đều cảm thấy bình yên 🕊️",
+        "Vì đôi mắt Bích Phượng đẹp như cả bầu trời sao 🌌",
+        "Vì Bích Phượng rủ anh đi ăn nhiều món ngon 🍕😋",
+        "Vì chỉ cần nhìn thấy Bích Phượng là anh quên hết mệt mỏi 💖",
+        "Vì Bích Phượng chính là mảnh ghép hoàn hảo mà anh tìm kiếm 🧩",
+        "Vì đơn giản... Bích Phượng là chính Bích Phượng! 🥰"
     ];
 
     // Set today's date in certificate
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (certDate) certDate.textContent = dateStr;
 
     // ==========================================================================
-    // 1. RUNAWAY "KHÔNG" BUTTON LOGIC (NÚT KHÔNG NÉ TRÁNH)
+    // 1. RUNAWAY "KHÔNG" BUTTON LOGIC (NÚT KHÔNG NÉ TRÁNH & NHẢY ĐI CHỖ KHÁC)
     // ==========================================================================
 
     function moveNoButton() {
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Calculate safe random coordinates within window viewport
         const btnWidth = noBtn.offsetWidth || 130;
         const btnHeight = noBtn.offsetHeight || 50;
-        const padding = 20;
+        const padding = 25;
 
         const maxX = window.innerWidth - btnWidth - padding;
         const maxY = window.innerHeight - btnHeight - padding;
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
         noBtn.style.left = `${randomX}px`;
         noBtn.style.top = `${randomY}px`;
 
-        // Update button text with funny message
+        // Update button text with funny message for Bích Phượng
         const randomMsg = dodgeMessages[Math.floor(Math.random() * dodgeMessages.length)];
         noBtnText.textContent = randomMsg;
 
@@ -154,7 +154,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================================
 
     yesBtn.addEventListener('click', () => {
-        // Sound celebration
+        // Ensure background MP3 audio is playing
+        playBackgroundMusic();
+
+        // Sound celebration FX
         playCelebrationSound();
 
         // Confetti explosion
@@ -169,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
         noBtn.style.display = 'none';
 
         // Start Typewriter Love Letter
-        const letterMessage = "Gửi em yêu của anh ❤️\nCảm ơn em đã chọn CÓ nha! Anh hứa sẽ luôn yêu thương, nhường nhịn và mang lại thật nhiều tiếng cười cho em mỗi ngày. Yêu em nhất trên đời! 🥰✨";
+        const letterMessage = "Gửi Bích Phượng yêu của anh ❤️\nCảm ơn em đã chọn CÓ nha! Anh hứa sẽ luôn yêu thương, nhường nhịn và mang lại thật nhiều tiếng cười cho Bích Phượng mỗi ngày. Yêu Bích Phượng nhất trên đời! 🥰✨";
         startTypewriter(letterMessage);
     });
 
@@ -248,11 +251,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================================
 
     sendMsgBtn.addEventListener('click', () => {
-        const msgText = "Em vừa bấm CÓ rồi nè! Yêu anh nhiều lắm ❤️🥰";
+        const msgText = "Bích Phượng vừa bấm CÓ rồi nè! Yêu anh nhiều lắm ❤️🥰";
         
         if (navigator.clipboard) {
             navigator.clipboard.writeText(msgText).then(() => {
-                alert("Đã sao chép lời nhắn: \"" + msgText + "\"\nBây giờ em có thể dán gửi cho anh qua Messenger/Zalo nha! 💌");
+                alert("Đã sao chép lời nhắn: \"" + msgText + "\"\nBây giờ Bích Phượng có thể dán gửi cho anh qua Messenger/Zalo nha! 💌");
             }).catch(() => {
                 alert(msgText);
             });
@@ -280,7 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==========================================================================
-    // 5. WEB AUDIO SYNTHESIZER (MUSIC & SOUNDS)
+    // 5. LOCAL MP3 AUDIO BACKGROUND MUSIC CONTROLS
     // ==========================================================================
 
     function initAudioContext() {
@@ -339,44 +342,55 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Gentle Synthesized Background Melody
-    function toggleBackgroundMusic() {
-        initAudioContext();
-        if (!audioCtx) return;
-
-        if (isMusicPlaying) {
-            clearInterval(musicInterval);
-            isMusicPlaying = false;
-            musicStatusText.textContent = "Bật nhạc 🎵";
-        } else {
-            isMusicPlaying = true;
-            musicStatusText.textContent = "Tắt nhạc 🎶";
-
-            const melody = [329.63, 392.00, 440.00, 523.25, 440.00, 392.00]; // E4, G4, A4, C5, A4, G4
-            let noteIdx = 0;
-
-            musicInterval = setInterval(() => {
-                const osc = audioCtx.createOscillator();
-                const gain = audioCtx.createGain();
-
-                osc.type = 'sine';
-                osc.frequency.setValueAtTime(melody[noteIdx], audioCtx.currentTime);
-
-                gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.6);
-
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
-
-                osc.start();
-                osc.stop(audioCtx.currentTime + 0.6);
-
-                noteIdx = (noteIdx + 1) % melody.length;
-            }, 600);
+    function playBackgroundMusic() {
+        if (!bgAudio) return;
+        const playPromise = bgAudio.play();
+        if (playPromise !== undefined) {
+            playPromise.then(() => {
+                isMusicPlaying = true;
+                if (musicStatusText) musicStatusText.textContent = "Tắt nhạc 🎶";
+                if (musicToggleBtn) musicToggleBtn.classList.add('playing');
+            }).catch((err) => {
+                isMusicPlaying = false;
+                if (musicStatusText) musicStatusText.textContent = "Bật nhạc 🎵";
+                if (musicToggleBtn) musicToggleBtn.classList.remove('playing');
+            });
         }
     }
 
-    musicToggleBtn.addEventListener('click', toggleBackgroundMusic);
+    function pauseBackgroundMusic() {
+        if (!bgAudio) return;
+        bgAudio.pause();
+        isMusicPlaying = false;
+        if (musicStatusText) musicStatusText.textContent = "Bật nhạc 🎵";
+        if (musicToggleBtn) musicToggleBtn.classList.remove('playing');
+    }
+
+    function toggleBackgroundMusic() {
+        if (bgAudio && !bgAudio.paused) {
+            pauseBackgroundMusic();
+        } else {
+            playBackgroundMusic();
+        }
+    }
+
+    if (musicToggleBtn) {
+        musicToggleBtn.addEventListener('click', toggleBackgroundMusic);
+    }
+
+    // Attempt direct autoplay on load
+    playBackgroundMusic();
+
+    // Auto play background music on ANY initial user interaction ("mở từ trước")
+    const startAudioOnInteraction = () => {
+        if (bgAudio && bgAudio.paused) {
+            playBackgroundMusic();
+        }
+    };
+
+    ['click', 'touchstart', 'mousemove', 'keydown', 'pointerdown'].forEach(evt => {
+        document.addEventListener(evt, startAudioOnInteraction, { once: true });
+    });
 
     // ==========================================================================
     // 6. BACKGROUND CANVAS FLOATING HEARTS ANIMATION
@@ -469,3 +483,4 @@ document.addEventListener('DOMContentLoaded', () => {
         animateCanvas();
     }
 });
+

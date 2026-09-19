@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Có Yêu Anh Không? ❤️</title>
-    <meta name="description" content="Trang web tỏ tình siêu đáng yêu với hiệu ứng độc đáo!">
+    <title>Có Yêu Anh Không, Bích Phượng? ❤️</title>
+    <meta name="description" content="Trang web tỏ tình siêu đáng yêu dành riêng cho Bích Phượng!">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,6 +19,13 @@
 </head>
 <body>
 
+    <!-- Background Audio Player for Local MP3 (Ngập Ngừng, Từng Ngày Yêu Em) -->
+    <audio id="bg-audio" loop preload="auto">
+        <source src="assets/bg_music.mp3" type="audio/mpeg">
+        <source src="assets/𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭 này giúp cậu manifest tình yêu đẹp, gặp đúng người_ Ngập Ngừng, Từng Ngày Yêu Em [P-vxT8sRe30].mp3" type="audio/mpeg">
+        Trình duyệt của bạn không hỗ trợ phát nhạc HTML5.
+    </audio>
+
     <!-- Background Canvas for Floating Hearts & Sparkles -->
     <canvas id="bg-canvas"></canvas>
 
@@ -26,7 +33,7 @@
     <div class="audio-control-container">
         <button id="music-toggle-btn" class="glass-btn audio-btn" title="Bật/Tắt nhạc nền">
             <i class="fa-solid fa-music"></i>
-            <span id="music-status-text">Bật nhạc 🎵</span>
+            <span id="music-status-text">Tắt nhạc 🎶</span>
         </button>
     </div>
 
@@ -35,23 +42,23 @@
         
         <!-- SECTION 1: QUESTION CARD (INITIAL STATE) -->
         <div id="question-card" class="glass-card fade-in">
-            <!-- Cute Mascot Image -->
+            <!-- Cute Mascot Image (Bích Phượng) -->
             <div class="mascot-wrapper">
-                <img src="assets/cute_cat.png" alt="Mèo cute cầm trái tim" class="mascot-img pulse-anim" id="mascot-img">
+                <img src="assets/bich_phuong.png" alt="Ảnh Bích Phượng xinh đẹp" class="mascot-img pulse-anim" id="mascot-img">
                 <div class="heart-badge">❤️</div>
             </div>
 
             <!-- Main Question Header -->
             <h1 class="main-title">
-                Hế lô bé yêu... <br>
+                Hế lô Bích Phượng bé yêu... <br>
                 <span class="highlight-text">Có yêu anh không?</span>
             </h1>
 
-            <p class="subtitle">Suy nghĩ kỹ trước khi chọn nha! 😉</p>
+            <p class="subtitle">Bích Phượng suy nghĩ kỹ trước khi chọn nha! 😉</p>
 
             <!-- Counter tracker of dodge attempts -->
             <div id="dodge-counter" class="dodge-badge hidden">
-                Đã cố bấm KHÔNG <span id="dodge-count">0</span> lần 😜
+                Bích Phượng đã cố bấm KHÔNG <span id="dodge-count">0</span> lần 😜
             </div>
 
             <!-- Interactive Buttons Container -->
@@ -76,14 +83,14 @@
             
             <div class="celebration-header">
                 <div class="confetti-icon">🎉</div>
-                <h2 class="celebration-title">YAAAYYY! Anh biết mà! 🥰❤️</h2>
-                <p class="celebration-subtitle">Em chính là điều tuyệt vời nhất của anh!</p>
+                <h2 class="celebration-title">YAAAYYY! Anh biết Bích Phượng sẽ chọn CÓ mà! 🥰❤️</h2>
+                <p class="celebration-subtitle">Bích Phượng chính là điều tuyệt vời nhất của anh!</p>
             </div>
 
             <div class="celebration-body">
-                <!-- Cute Celebration Photo -->
+                <!-- Cute Celebration Photo (Bích Phượng) -->
                 <div class="photo-frame">
-                    <img src="assets/love_celebration.png" alt="Cặp đôi hạnh phúc" class="celebration-img">
+                    <img src="assets/bich_phuong.png" alt="Bích Phượng xinh đẹp" class="celebration-img">
                     <div class="photo-sparkles">✨</div>
                 </div>
 
@@ -91,7 +98,7 @@
                 <div class="love-letter-box">
                     <div class="letter-header">
                         <i class="fa-solid fa-heart letter-icon"></i>
-                        <span>Bức thư gửi bé yêu</span>
+                        <span>Bức thư gửi Bích Phượng bé yêu</span>
                     </div>
                     <div id="typewriter-text" class="typewriter-content"></div>
                 </div>
@@ -99,8 +106,8 @@
                 <!-- Official Love Certificate -->
                 <div class="certificate-box">
                     <div class="cert-border">
-                        <div class="cert-title">📜 CHỨNG NHẬN TÌNH YÊU 📜</div>
-                        <p class="cert-desc">Xác nhận rằng chúng mình đã chính thức hợp tác yêu thương nhau từ hôm nay!</p>
+                        <div class="cert-title">📜 CHỨNG NHẬN TÌNH YÊU CỦA BÍCH PHƯỢNG 📜</div>
+                        <p class="cert-desc">Xác nhận rằng Bích Phượng và anh đã chính thức hợp tác yêu thương nhau từ hôm nay!</p>
                         <div class="cert-details">
                             <div class="cert-item">
                                 <span class="cert-label">Thời gian:</span>
@@ -116,9 +123,9 @@
 
                 <!-- Interactive "Why I Love You" Generator -->
                 <div class="reason-section">
-                    <h3>💡 100 Lý Do Anh Yêu Em</h3>
+                    <h3>💡 100 Lý Do Anh Yêu Bích Phượng</h3>
                     <div id="reason-box" class="reason-box">
-                        <span id="reason-text">Bấm nút bên dưới để xem lý do anh yêu em nha! 👇</span>
+                        <span id="reason-text">Bấm nút bên dưới để xem lý do anh yêu Bích Phượng nha! 👇</span>
                     </div>
                     <button id="generate-reason-btn" class="btn btn-secondary">
                         <i class="fa-solid fa-wand-magic-sparkles"></i> Xem lý do tiếp theo 💕
